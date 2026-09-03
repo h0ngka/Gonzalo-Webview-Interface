@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Android WebView Bridge 테스트</title>
+  <meta name="color-scheme" content="light" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>WebView Bridge 테스트</h1>
+    <p class="app-header__desc">
+      아래 버튼은 <code>window.AndroidBridge</code>를 통해 Android 네이티브 기능을 호출합니다.
+    </p>
+    <p id="bridge-status" class="bridge-status" role="status"></p>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="orientation-title">
+      <h2 id="orientation-title">1. 화면 방향 전환</h2>
+      <div class="button-row">
+        <button type="button" id="btn-landscape" class="btn">가로 모드</button>
+        <button type="button" id="btn-portrait" class="btn">세로 모드</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="keyboard-title">
+      <h2 id="keyboard-title">2. 키보드 노출/비노출</h2>
+      <div class="button-row">
+        <button type="button" id="btn-show-keyboard" class="btn">키보드 표시</button>
+        <button type="button" id="btn-hide-keyboard" class="btn">키보드 숨김</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="popup-title">
+      <h2 id="popup-title">3. 텍스트 팝업</h2>
+      <div class="field">
+        <label for="popup-input">팝업으로 표시할 텍스트</label>
+        <input
+          type="text"
+          id="popup-input"
+          name="popup-input"
+          placeholder="예: 안녕하세요"
+          autocomplete="off"
+        />
+      </div>
+      <div class="button-row">
+        <button type="button" id="btn-popup" class="btn" disabled>팝업으로 보기</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="toast-title">
+      <h2 id="toast-title">4. 텍스트 토스트</h2>
+      <div class="field">
+        <label for="toast-input">토스트로 표시할 텍스트</label>
+        <input
+          type="text"
+          id="toast-input"
+          name="toast-input"
+          placeholder="예: 저장되었습니다"
+          autocomplete="off"
+        />
+      </div>
+      <div class="button-row">
+        <button type="button" id="btn-toast" class="btn" disabled>토스트로 보기</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="location-title">
+      <h2 id="location-title">5. 위치 정보 조회</h2>
+      <div class="button-row">
+        <button type="button" id="btn-location" class="btn">위치 정보 확인</button>
+      </div>
+      <div id="location-result" class="result-box" aria-live="polite">
+        <p class="result-box__placeholder">아직 조회하지 않았습니다.</p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="log-title">
+      <h2 id="log-title">호출 로그</h2>
+      <ul id="log-list" class="log-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <script src="js/bridge.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+/* ---------- 기본 리셋 & 토큰 ---------- */
+:root {
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-text: #1a1d23;
+  --color-text-muted: #5b6270;
+  --color-border: #e1e4e9;
+  --color-primary: #2f6feb;
+  --color-primary-hover: #2559c4;
+  --color-primary-text: #ffffff;
+  --color-success-bg: #e6f6ec;
+  --color-success-text: #146c2e;
+  --color-error-bg: #fdeceb;
+  --color-error-text: #b3261e;
+  --color-focus: #2f6feb;
+  --radius: 12px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 레이아웃 ---------- */
+.app-header {
+  padding: var(--spacing-5) var(--spacing-4) var(--spacing-4);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-header h1 {
+  margin: 0 0 var(--spacing-2);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.app-header__desc {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.app-header__desc code {
+  background: var(--color-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+.bridge-status {
+  margin: var(--spacing-3) 0 0;
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.bridge-status[data-state="connected"] {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.bridge-status[data-state="missing"] {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+/* ---------- 카드 ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing-4);
+}
+
+.card h2 {
+  margin: 0 0 var(--spacing-3);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ---------- 폼 요소 ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.field input[type="text"] {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.field input[type="text"]:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+  background: var(--color-surface);
+}
+
+/* ---------- 버튼 ---------- */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.btn {
+  flex: 1 1 auto;
+  min-width: 120px;
+  min-height: 44px;
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ---------- 위치 결과 박스 ---------- */
+.result-box {
+  margin-top: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-radius: 8px;
+  background: var(--color-bg);
+  font-size: 0.9375rem;
+}
+
+.result-box__placeholder {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.result-box.is-success {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.result-box.is-error {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.result-box dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-1) var(--spacing-3);
+}
+
+.result-box dt {
+  font-weight: 600;
+}
+
+.result-box dd {
+  margin: 0;
+}
+
+/* ---------- 로그 리스트 ---------- */
+.log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.log-list:empty::before {
+  content: "아직 호출 기록이 없습니다.";
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.log-list li {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  padding: var(--spacing-2) var(--spacing-3);
+  background: var(--color-bg);
+  border-radius: 6px;
+  word-break: break-all;
+}
+
+.log-list li time {
+  color: var(--color-text);
+  font-weight: 600;
+  margin-right: var(--spacing-2);
+}
+
+/* ---------- 반응형 (작은 화면 대응) ---------- */
+@media (max-width: 360px) {
+  .button-row {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- 넓은 화면(태블릿 등)에서 여백 확보 ---------- */
+@media (min-width: 768px) {
+  main {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .app-header {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+}
