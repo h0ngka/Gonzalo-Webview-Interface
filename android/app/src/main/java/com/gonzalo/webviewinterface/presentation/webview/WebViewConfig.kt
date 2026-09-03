@@ -8,5 +8,5 @@ package com.gonzalo.webviewinterface.presentation.webview
  */
 object WebViewConfig {
 
-    const val TARGET_URL: String = "https://temporary-speedy-tempest-lhd12dt.vercel.app/"
+    const val TARGET_URL: String = "https://web-five-flame-24.vercel.app/"
 }
